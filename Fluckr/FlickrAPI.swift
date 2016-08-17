@@ -12,6 +12,19 @@ import FlickrKit
 import SVProgressHUD
 
 class FlickrAPI {
+    private func getPhotosFromResponse(data: [NSObject : AnyObject]) -> [FlickrPhoto] {
+        var photosUrls: [FlickrPhoto] = []
+        let topPhotos = data["photos"] as! [NSObject: AnyObject]
+        let photoArray = topPhotos["photo"] as! [[NSObject: AnyObject]]
+        
+        for photoDictionary in photoArray {
+            let thumbURL = FlickrKit.sharedFlickrKit().photoURLForSize(FKPhotoSizeSmall240, fromPhotoDictionary: photoDictionary)
+            let fullURL = FlickrKit.sharedFlickrKit().photoURLForSize(FKPhotoSizeLarge1024, fromPhotoDictionary: photoDictionary)
+            photosUrls.append(FlickrPhoto(thumbUrl: thumbURL, fullUrl: fullURL))
+        }
+        return photosUrls
+    }
+    
     private func performSearch(method: FKFlickrAPIMethod, onSuccess: ([FlickrPhoto]) -> Void) {
         SVProgressHUD.show()
         FlickrKit.sharedFlickrKit().call(method) {
@@ -24,13 +37,7 @@ class FlickrAPI {
             if let response = response {
                 var photosUrls: [FlickrPhoto] = []
                 
-                let topPhotos = response["photos"] as! [NSObject: AnyObject]
-                let photoArray = topPhotos["photo"] as! [[NSObject: AnyObject]]
-                for photoDictionary in photoArray {
-                    let thumbURL = FlickrKit.sharedFlickrKit().photoURLForSize(FKPhotoSizeSmall240, fromPhotoDictionary: photoDictionary)
-                    let fullURL = FlickrKit.sharedFlickrKit().photoURLForSize(FKPhotoSizeLarge1024, fromPhotoDictionary: photoDictionary)
-                    photosUrls.append(FlickrPhoto(thumbUrl: thumbURL, fullUrl: fullURL))
-                }
+                photosUrls = self.getPhotosFromResponse(response)
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     onSuccess(photosUrls)
