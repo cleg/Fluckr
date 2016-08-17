@@ -6,6 +6,7 @@
 //  Copyright © 2016 Taburetka. All rights reserved.
 //
 
+import FlickrKit
 import UIKit
 
 @UIApplicationMain
@@ -15,7 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let apiKey: String = "6f18307d7d760942cd369377195aa26b"
+        let secret: String = "5442ca6e8e3c29ee"
+        FlickrKit.sharedFlickrKit().initializeWithAPIKey(apiKey, sharedSecret: secret)
+        
         return true
     }
 

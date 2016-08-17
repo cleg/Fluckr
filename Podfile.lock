@@ -1,0 +1,18 @@
+PODS:
+  - FlickrKit (1.0.8)
+  - Kingfisher (2.4.2)
+  - SVProgressHUD (2.0.3)
+
+DEPENDENCIES:
+  - FlickrKit
+  - Kingfisher
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  FlickrKit: beadf880a10ccaa2f13666d04112324fe08815e2
+  Kingfisher: 05bf8d04408aaa70fcd2c8c81b9f1d0f1ad313dd
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+
+PODFILE CHECKSUM: 01ee5b16c3264f9fd34dd5222b859efa5e89943b
+
+COCOAPODS: 1.0.1
