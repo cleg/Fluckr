@@ -91,6 +91,7 @@
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="2j2-bc-cyZ" firstAttribute="leading" secondItem="D7d-N6-Sjy" secondAttribute="leading" id="SOE-wL-WA5"/>
                             <constraint firstItem="2j2-bc-cyZ" firstAttribute="top" secondItem="YXh-rX-pWu" secondAttribute="bottom" symbolic="YES" id="aJR-gh-2Zf"/>
