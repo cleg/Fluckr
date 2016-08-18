@@ -12,6 +12,12 @@ import FlickrKit
 import SVProgressHUD
 
 class FlickrAPI {
+    init() {
+        let apiKey: String = "6f18307d7d760942cd369377195aa26b"
+        let secret: String = "5442ca6e8e3c29ee"
+        FlickrKit.sharedFlickrKit().initializeWithAPIKey(apiKey, sharedSecret: secret)
+    }
+    
     private func getPhotosFromResponse(data: [NSObject : AnyObject]) -> [FlickrPhoto] {
         var photosUrls: [FlickrPhoto] = []
         let topPhotos = data["photos"] as! [NSObject: AnyObject]

@@ -7,52 +7,44 @@
 //
 
 import CoreLocation
-import UIKit
+import Kingfisher
 import SVProgressHUD
+import UIKit
 
-class GeoSearchViewController: UIViewController, CLLocationManagerDelegate, ImagesViewDelegate {
+
+class GeoSearchViewController: PhotoCollectionViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     let flickrApi = FlickrAPI()
-    
-    var page: Int = 0
-    let perPage: Int = 21
-    var hasMore = true
-    var data: [FlickrPhoto] = []
     
     var latitude: CLLocationDegrees?
     var longitude: CLLocationDegrees?
     
-    var imagesViewController: ImagesCollectionViewController? {
-        get {
-            return self.childViewControllers[0] as? ImagesCollectionViewController
-        }
-    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         locationManager.delegate = self
         imagesViewController?.delegate = self
 
-        if NSUserDefaults.standardUserDefaults().boolForKey("storedLocation") {
+        let hadLocation = NSUserDefaults.standardUserDefaults().boolForKey("storedLocation")
+        if  hadLocation {
             latitude = NSUserDefaults.standardUserDefaults().doubleForKey("latitude")
             longitude = NSUserDefaults.standardUserDefaults().doubleForKey("longitude")
-            newPage()
-        } else {
-            newSearch()
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if photos.count == 0 {
+            if NSUserDefaults.standardUserDefaults().boolForKey("storedLocation") {
+                newPage()
+            } else {
+                newSearch()
+            }
+        }
     }
     
-    func newSearch() {
-        page = 0
-        hasMore = true
-        data = []
+    override func newSearch() {
+        super.newSearch()
         latitude = nil
         longitude = nil
         
@@ -87,24 +79,15 @@ class GeoSearchViewController: UIViewController, CLLocationManagerDelegate, Imag
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func newPage() {
+    override func getNextPage(onSuccess: ([FlickrPhoto]) -> Void) {
         guard let latitude = latitude, let longitude = longitude else {
+            onSuccess([])
             return
         }
         
-        if !hasMore {
-            return
-        }
-        
-        page += 1
         flickrApi.getNearbyPhotos(latitude, longitude: longitude, page: page, perPage: perPage) {
             result in
-            if result.count < self.perPage {
-                self.hasMore = false
-            }
-            self.data.appendContentsOf(result)
-            self.imagesViewController?.photos = self.data
+            onSuccess(result)
         }
-        
     }
 }

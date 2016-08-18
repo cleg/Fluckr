@@ -8,7 +8,7 @@
         <!--Geolocation-->
         <scene sceneID="3UN-Ku-Oja">
             <objects>
-                <navigationController id="gjh-om-mhW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GeoSearchNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gjh-om-mhW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Geolocation" image="Geo" id="gW9-7t-bv2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cYO-s5-am8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -25,7 +25,7 @@
         <!--Geo Search-->
         <scene sceneID="fH8-Vi-gCc">
             <objects>
-                <viewController id="Q6h-Dc-IwY" customClass="GeoSearchViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GeoSearchController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q6h-Dc-IwY" customClass="GeoSearchViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UIZ-hN-Gro"/>
                         <viewControllerLayoutGuide type="bottom" id="Jfx-sL-vtf"/>
@@ -67,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="583" y="324"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Keyword search-->
         <scene sceneID="kBv-Cl-ZWv">
             <objects>
-                <viewController id="RRs-yc-DXK" customClass="SearchViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RRs-yc-DXK" customClass="SearchViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YXh-rX-pWu"/>
                         <viewControllerLayoutGuide type="bottom" id="q8R-0m-Mb8"/>
@@ -101,19 +101,19 @@
                             <constraint firstAttribute="trailing" secondItem="VNd-MP-Q7U" secondAttribute="trailing" id="xKA-Cc-7Wg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="jd5-I3-HLO"/>
+                    <navigationItem key="navigationItem" title="Keyword search" id="jd5-I3-HLO"/>
                     <connections>
                         <outlet property="searchBar" destination="2j2-bc-cyZ" id="MDr-7r-CKG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wb-tR-VMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="608" y="1040"/>
+            <point key="canvasLocation" x="583" y="1053"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7ZT-0e-hpk">
             <objects>
-                <tabBarController id="7TL-Zt-vpX" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7TL-Zt-vpX" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Cji-AI-biP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -131,7 +131,7 @@
         <!--Navigation Controller-->
         <scene sceneID="HGK-7u-a06">
             <objects>
-                <navigationController id="ei7-OS-6x0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SearchNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ei7-OS-6x0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="pg9-bL-kid"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EXb-qf-N8o">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -143,12 +143,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBe-R0-5I1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-141" y="1040"/>
+            <point key="canvasLocation" x="-141" y="1053"/>
         </scene>
         <!--Images Collection View Controller-->
         <scene sceneID="6WE-u5-AAM">
             <objects>
-                <collectionViewController storyboardIdentifier="ImageCollectionView" id="Afj-au-rrE" customClass="ImagesCollectionViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ImageCollectionView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Afj-au-rrE" customClass="ImagesCollectionViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="ImagesViewController" dataMode="prototypes" id="79g-Fw-AAe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="443"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -167,7 +167,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ds4-xS-snE">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ds4-xS-snE">
                                             <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                         </imageView>
                                     </subviews>
@@ -193,12 +193,12 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5vY-Mn-pTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1401" y="696"/>
+            <point key="canvasLocation" x="1402" y="708.5"/>
         </scene>
         <!--Full Image View Controller-->
         <scene sceneID="8Zc-UE-0oe">
             <objects>
-                <viewController storyboardIdentifier="FullImageView" id="r5o-XK-xh5" customClass="FullImageViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FullImageView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r5o-XK-xh5" customClass="FullImageViewController" customModule="Fluckr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jsc-NT-cLr"/>
                         <viewControllerLayoutGuide type="bottom" id="rac-Ui-nWI"/>
@@ -241,7 +241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2D-bQ-xvH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2135" y="695.5"/>
+            <point key="canvasLocation" x="2135" y="708.5"/>
         </scene>
     </scenes>
     <resources>
